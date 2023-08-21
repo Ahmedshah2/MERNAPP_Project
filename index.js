@@ -8,6 +8,7 @@ const Products = require('./ProductsAPI/productRoutes')
 const Brands = require('./BrandsAPI/brandRoutes')
 const Orders = require('./OrdersAPI/orderRoutes')
 const path = require('path')
+const port = process.env.SERVER_PORT || 3456
 
 
 const clientpath = path.join(__dirname, './client/dist')
@@ -30,6 +31,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/dist/index.html'))
 })
 
-app.listen(process.env.port, () => {
-    console.log(`APP LISTENING http://localhost:${process.env.port}`)
+
+
+
+app.listen(port, () => {
+    console.log(`APP LISTENING http://localhost:${port}`)
 })
