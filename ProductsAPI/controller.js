@@ -52,7 +52,7 @@ const ProductbyCategory = async (req, res) => {
         res.status(403).json({ message: "Please Enter Category Name" })
     }
     else {
-        await connect(process.env.MONGO_URI)
+        await connect(process.env.MONGODB_URI)
         const products = await Products.find({ category })
         res.json({ products })
     }
