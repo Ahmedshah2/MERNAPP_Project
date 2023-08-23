@@ -7,7 +7,7 @@ const { connect } = require("mongoose");
 
 
 const placeOrder = async (req, res) => {
-    const { customerName, customerEmail, customerId, customerContact, customerAddress, order } = req.body
+    const { customerName, customerEmail, customerId, customerContact, customerAddress, order, orderStatus } = req.body
 
     const config = {
         service: 'gmail',
@@ -31,7 +31,7 @@ const placeOrder = async (req, res) => {
 
     try {
         await connect(process.env.MONGODB_URI)
-        const orders = await Orders.create({ customerName, customerEmail, customerId, customerContact, customerAddress, order })
+        const orders = await Orders.create({ customerName, customerEmail, customerId, customerContact, customerAddress, order, orderStatus })
 
         await transporter.sendMail({
             from: "shahkhanahmed401@gmail.com",
@@ -40,13 +40,14 @@ const placeOrder = async (req, res) => {
             html: mailGenerator.generate({
                 body: {
                     name: customerName,
-                    intro: 'Thanks for choosing us, Your Placed order will be delivered to you as soon as possible',
+                    intro: `Thanks for choosing us, Your Placed order will be delivered to you as soon as possible, Current Your Order Status is ${orderStatus}`,
                     table: {
                         data: [
                             {
                                 customerName,
                                 customerEmail,
                                 customerAddress,
+                                "OrderStatus": orderStatus,
                                 customerContact,
                                 tracking_id: orders._id
                             }
@@ -74,7 +75,6 @@ const getallOrders = async (req, res) => {
         await connect(process.env.MONGODB_URI)
         const orders = await Orders.find()
         res.json({ orders })
-
     }
 
     catch (error) {
@@ -97,4 +97,32 @@ const trackOrder = async (req, res) => {
     }
 }
 
-module.exports = { placeOrder, getallOrders, trackOrder }
+
+const deleteorder = async (req, res) => {
+    const { _id } = req.body;
+    if (!_id) {
+        res.status(403).json({ message: "OrderID is required" })
+    }
+    else {
+        await connect(process.env.MONGODB_URI);
+        const orders = await Orders.deleteOne({ _id })
+        res.json({ message: "Deleted Successfully", orders })
+    }
+}
+const updatestatus = async (req, res) => {
+    const { _id, orderStatus } = req.body;
+
+    try {
+        await connect(process.env.MONGODB_URI);
+        const updatedOrder = await Orders.updateOne({ _id: _id }, { $set: { orderStatus: orderStatus } });
+
+        res.json({ message: "Updated Successfully", order: updatedOrder });
+    } catch (error) {
+        res.status(400).json({
+            message: error.message
+        });
+    }
+};
+
+
+module.exports = { placeOrder, getallOrders, trackOrder, deleteorder, updatestatus }

@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { GlobalContext } from '../../Context/context'
+import './style.css'
+import { Link } from 'react-router-dom'
+
 
 export default function LoginForm() {
 
@@ -29,28 +32,29 @@ export default function LoginForm() {
     }
 
     return (
-        <div className="flip-card__front">
-            <div className="title">Log in</div>
-            <form className="flip-card__form" onSubmit={loginUser}>
-                <input
-                    className="flip-card__input"
-                    name="email"
-                    placeholder="Email"
-                    required
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    className="flip-card__input"
-                    name="password"
-                    required
-                    placeholder="Password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="flip-card__btn">Let`s go!</button>
+        <div className="container-center">
+            <form className="form" onSubmit={loginUser}>
+                <p className="form-title">Sign in to your account</p>
+                <div className="input-container">
+                    <input
+                        type="email"
+                        name='email'
+                        placeholder="Enter email"
+                        value={email}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <span></span>
+                </div>
+                <div className="input-container">
+                    <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                <button type="submit" className="submit">
+                    Sign in
+                </button>
+                <p className="signup-link">
+                    No account? <Link to='/signup' >Sign up</Link>
+                </p>
             </form>
         </div>
     )

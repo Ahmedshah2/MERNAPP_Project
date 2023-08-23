@@ -43,10 +43,10 @@ export default function CustomCart() {
 
 
     const placeOrder = () => {
-        if (!cart_state || !customerAddress || !customerContact) {
+        if (!cart_state.cart || !customerAddress || !customerContact) {
             alert('Cart or Fields are empty');
         } else {
-            setIsPlacingOrder(true); // Start the progress indicator
+            setIsPlacingOrder(true);
 
             const payload = {
                 customerName: currentUser.username,
@@ -88,7 +88,7 @@ export default function CustomCart() {
     //     localStorage.setItem('cart', JSON.stringify(existingCart));
 
     // }
-    const totalSum = cart_state?.cart.reduce((accumulator, currentValue) => {
+    const totalSum = cart_state?.cart?.reduce((accumulator, currentValue) => {
         const priceAsNumber = parseFloat(currentValue.price); // Convert price to a number
         return accumulator + priceAsNumber;
     }, 0);
@@ -123,8 +123,8 @@ export default function CustomCart() {
                         </div>
                     </div>
                 ))}
-            <hr />
-            <div className="checkout">
+            <hr className='mt-5' />
+            <div className="checkout mt-5">
                 <div className="total">
                     <div>
                         <div className="Subtotal">Sub-Total</div>

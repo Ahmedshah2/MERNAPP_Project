@@ -66,9 +66,9 @@ const getAllCategories = async (req, res) => {
 }
 
 const deleteCategory = async (req, res) => {
-    const { CategoryName } = req.query;
+    const { _id } = req.body;
 
-    if (!CategoryName) {
+    if (!_id) {
         res.status(400).json({
             message: "Category Name not given"
         })
@@ -77,8 +77,7 @@ const deleteCategory = async (req, res) => {
     else {
         try {
             await connect(process.env.MONGODB_URI)
-            await Category.deleteOne({ CategoryName: CategoryName })
-            const categories = await Category.find()
+            const categories = await Category.deleteOne({ _id })
 
             res.json({
                 message: "Category Deleted Successfully",

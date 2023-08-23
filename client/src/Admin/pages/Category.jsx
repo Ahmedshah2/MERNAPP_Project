@@ -48,6 +48,21 @@ function CategoryModal() {
   }, [])
 
 
+  const deletecategory = (_id) => {
+    console.log(_id)
+    const payload = { _id }
+
+
+    let config = {
+      method: 'delete',
+      url: '/api/deletecategory',
+      data: payload
+    };
+
+
+    axios(config).then(json => console.log(json.data)).finally(window.location.reload()).catch(err => alert(err))
+
+  }
 
   return (
     <>
@@ -63,7 +78,12 @@ function CategoryModal() {
 
         <div className="d-flex flex-wrap justify-content-center m-3">
           {
-            category.map((val, key) => <UserCards key={key} image={val.CategoryImage} name={val.CategoryName} />)
+            category.map((val, key) => <div>
+              <UserCards key={key} image={val.CategoryImage} name={val.CategoryName} />
+              <Button className='ms-4' variant="danger" onClick={deletecategory.bind(null, val._id)}>
+                Delete Category
+              </Button>
+            </div>)
           }
 
         </div>

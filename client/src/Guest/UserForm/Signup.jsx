@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+
 
 export default function Signupform() {
 
@@ -12,42 +14,50 @@ export default function Signupform() {
         const payload = { email, password, username }
 
         axios.post('/api/signup', payload)
-            .then((json) => window.location.reload())
+            .then((json) => console.log(json))
             .catch(err => console.log(err))
 
     }
 
     return (
-        <div className="flip-card__back">
-            <div className="title">Sign up</div>
-            <form className="flip-card__form" onSubmit={SignupUser}>
-                <input
-                    className="flip-card__input"
-                    placeholder="Name"
-                    type="name"
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    className="flip-card__input"
-                    name="email"
-                    placeholder="Email"
-                    required
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    className="flip-card__input"
-                    name="password"
-                    required
-                    placeholder="Password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="flip-card__btn">Confirm!</button>
+        <div className="container-center">
+            <form className="form" onSubmit={SignupUser}>
+                <p className="form-title">Sign Up/Register to account</p>
+                <div className="input-container">
+                    <input
+                        type="name"
+                        placeholder="Enter username"
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <span></span>
+                </div>
+                <div className="input-container">
+                    <input
+                        type="email"
+                        placeholder="Enter email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <span></span>
+                </div>
+                <div className="input-container">
+                    <input
+                        name="password"
+                        required
+                        placeholder="Password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <button type="submit" className="submit">
+                    Sign Up
+                </button>
+                <p className="signup-link">
+                    Have an Account? <Link to="/login">Sign in</Link>
+                </p>
             </form>
         </div>
     )

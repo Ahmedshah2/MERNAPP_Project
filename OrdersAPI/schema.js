@@ -26,6 +26,10 @@ const OrdersSchema = new Schema({
         type: Array,
         required: true,
     },
+    orderStatus: {
+        type: String,
+        default: "Pending...",
+    },
     order_at: {
         type: Date,
         default: Date.now

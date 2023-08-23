@@ -11,7 +11,7 @@ export default function Orders() {
         axios
             .get('/api/getallorders')
             .then((response) => {
-                setOrders(response.data.orders); // Assuming the response contains an 'orders' array
+                setOrders(response.data.orders);
             })
             .catch((error) => {
                 console.error('Error fetching orders:', error);
@@ -21,7 +21,7 @@ export default function Orders() {
     return (
         <div className="orders-list">
             {orders.map((order, key) => (
-                <OrderCard key={key} order={order} /> // Render the OrderCard component for each order
+                <OrderCard key={key} order={order} />
             ))}
         </div>
     );

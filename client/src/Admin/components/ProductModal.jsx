@@ -90,7 +90,7 @@ function ProductModal() {
                         axios.post('/api/createproduct', payload).then((json) => {
                             setShow(false);
                         }).finally(() => {
-                            window.location.reload()
+                            // window.location.reload()
                             setIsProcessing(false);
                         })
 

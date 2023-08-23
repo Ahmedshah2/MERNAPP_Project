@@ -44,6 +44,22 @@ function Brands() {
     }, [])
 
 
+    const deletebrand = (_id) => {
+        console.log(_id)
+        const payload = { _id }
+
+
+        let config = {
+            method: 'delete',
+            url: '/api/deletebrand',
+            data: payload
+        };
+
+
+        axios(config).then(json => console.log(json.data)).finally(window.location.reload()).catch(err => alert(err))
+
+    }
+
 
     return (
         <>
@@ -59,7 +75,9 @@ function Brands() {
 
                 <div className="d-flex flex-wrap justify-content-center m-3">
                     {
-                        brands.map((val, key) => <UserCards key={key} image={val.BrandImage} name={val.BrandName} />)
+                        brands.map((val, key) => <div><UserCards key={key} image={val.BrandImage} name={val.BrandName} />
+                            <Button className='ms-4' variant="danger" onClick={deletebrand.bind(null, val._id)}>Delete Brand</Button>
+                        </div>)
                     }
 
                 </div>

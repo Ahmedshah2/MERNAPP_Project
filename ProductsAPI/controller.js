@@ -30,7 +30,7 @@ const createProduct = async (req, res) => {
                 res.status(403).json({ message: "Product Already Exists" })
             }
             else {
-                await Products.create({ productname, thumbnail, description, price, discountprice, category, brand, images })
+                await Products.create({ productname, thumbnail, description, price, category, brand, images })
                 const products = await Products.find()
                 res.status(201).json({
                     message: "Product Created Successfully",
@@ -45,6 +45,19 @@ const createProduct = async (req, res) => {
     }
 
 }
+
+const deleteProduct = async (req, res) => {
+    const { _id } = req.body;
+    if (!_id) {
+        res.status(403).json({ message: "ProductID is required" })
+    }
+    else {
+        await connect(process.env.MONGODB_URI);
+        const products = await Products.deleteOne({ _id })
+        res.json({ message: "Deleted Successfully", products })
+    }
+}
+
 
 const ProductbyCategory = async (req, res) => {
     const { category } = req.params
@@ -71,4 +84,4 @@ const ProductbyId = async (req, res) => {
 }
 
 
-module.exports = { getProducts, createProduct, ProductbyCategory, ProductbyId }
+module.exports = { getProducts, createProduct, deleteProduct, ProductbyCategory, ProductbyId }

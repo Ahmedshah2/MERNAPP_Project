@@ -5,8 +5,26 @@ import axios from 'axios'
 export default function Products() {
 
     const [Product, setProduct] = useState([])
+    useEffect(() => {
+        axios.get("/api/getallproducts")
+            .then(json => setProduct(json.data.products))
+            .catch(err => console.log(err.message))
+    })
 
-    axios.get('/api/getallproducts').then(json => setProduct(json.data.products))
+    const deleteproduct = (_id) => {
+        const payload = { _id }
+
+
+        let config = {
+            method: 'delete',
+            url: '/api/deleteproduct',
+            data: payload
+        };
+
+
+        axios(config).then(json => console.log(json.data)).catch(err => console.log(err))
+
+    }
     return (
         <div className="container">
             <div className="d-flex justify-content-between align-items-center bg-primary p-2 my-3 rounded">
@@ -31,7 +49,12 @@ export default function Products() {
                         {
                             Product.map((val, key) =>
                                 <tr key={key}>
-                                    <th scope="row">{val._id}</th>
+                                    <th scope="row">
+                                        {val._id}
+                                        <button className='btn btn-danger p-1 mt-2' onClick={deleteproduct.bind(null, val._id)}>
+                                            Delete Product
+                                        </button>
+                                    </th>
                                     <td>{val.productName}</td>
                                     <td>{val.category}</td>
                                     <td>{val.brand}</td>
@@ -39,9 +62,10 @@ export default function Products() {
                                     <td>{val.description}</td>
 
                                     <td><img src={val.thumbnail} className='img-fluid' style={{ height: '15vh', objectFit: 'contain' }} alt="" srcSet="" /></td>
-
-                                </tr>)
-                        }
+                                    <td>
+                                    </td>
+                                </tr>
+                            )}
 
 
 

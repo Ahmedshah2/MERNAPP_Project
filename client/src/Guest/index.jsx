@@ -6,7 +6,8 @@ import {
     Routes,
 } from "react-router-dom";
 import Home from './HomePage';
-import Login from './LoginPage'
+import LoginForm from './UserForm/Login'
+import Signupform from './UserForm/Signup';
 
 
 export default function Guest() {
@@ -15,7 +16,8 @@ export default function Guest() {
             <GuestNav />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/signup" element={<Signupform />} />
                 <Route path="*" element={<Navigate to='/login' replace={true} />} />
             </Routes>
         </>

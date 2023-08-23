@@ -1,8 +1,8 @@
 .CartContainer {
     width: 90%;
-    background-color: #ffffff;
+    background-color: #efefef;
     border-radius: 20px;
-    box-shadow: 0px 10px 20px #1687d933;
+    padding: 15px;
 }
 
 .Header {
@@ -137,7 +137,7 @@
 hr {
     width: 66%;
     float: right;
-    margin-right: 5%;
+    margin-right: 20px;
 }
 
 .checkout {

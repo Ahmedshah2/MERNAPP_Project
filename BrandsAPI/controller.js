@@ -44,6 +44,20 @@ const createBrand = async (req, res) => {
 }
 
 
+const deleteBrand = async (req, res) => {
+    const { _id } = req.body;
+    if (!_id) {
+        res.status(403).json({ message: "BrandID is required" })
+    }
+    else {
+        await connect(process.env.MONGODB_URI);
+        const brands = await Brand.deleteOne({ _id })
+        res.json({ message: "Deleted Successfully", brands })
+    }
+}
+
+
+
 const getAllBrands = async (req, res) => {
     try {
         await connect(process.env.MONGODB_URI)
@@ -62,4 +76,4 @@ const getAllBrands = async (req, res) => {
 }
 
 
-module.exports = { createBrand, getAllBrands }
+module.exports = { createBrand, deleteBrand, getAllBrands }

@@ -8,7 +8,7 @@
 }
 
 .clear-cart-button {
-    background-color: #04bd23;
+    background-color: #bd0404;
     width: 120px;
     text-align: center;
     color: white;
@@ -21,7 +21,7 @@
 }
 
 .clear-cart-button:hover {
-    background-color: #003115;
+    background-color: #e52b2b;
     transform: scale(1.05);
 }
 
