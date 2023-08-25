@@ -4,13 +4,13 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 // import "bootstrap/dist/css/bootstrap.min.css";
-
+import './card.css'
 
 
 export default function UserCards({ name, image, url, description }) {
     return (
 
-        <Row className="m-1">
+        <Row className="m-1 user-card">
             <Col className='m-1'>
                 <Link to={url} className='text-decoration-none'>
                     <Card style={{ width: '320px' }}>

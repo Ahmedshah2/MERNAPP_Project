@@ -2,7 +2,7 @@ import React from 'react';
 import '../pages/style.css';
 import axios from 'axios';
 
-export default function OrderCard({ order }) {
+export default function OrderCard({ order, recallData }) {
     const cancelorder = async (_id) => {
         console.log("Ïn Running")
         const payload = { _id }
@@ -13,12 +13,12 @@ export default function OrderCard({ order }) {
         };
 
 
-        axios(config).then(json => console.log(json.data)).finally(window.location.reload()).catch(err => alert(err.message))
+        axios(config).then(json => recallData(json.data.orders)).catch(err => alert(err.message))
     }
     const updatestatus = async (_id, orderStatus) => {
         const payload = { _id, orderStatus }
-
-        axios.put("/api/updatestatus", payload).then(json => console.log(json.data)).finally(window.location.reload()).catch(err => alert(err.message))
+        console.log("updated")
+        axios.put("/api/updatestatus", payload).then(json => window.location.reload()).catch(err => alert(err.message))
     }
 
 

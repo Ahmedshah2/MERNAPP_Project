@@ -21,7 +21,7 @@ export default function Orders() {
     return (
         <div className="orders-list">
             {orders.map((order, key) => (
-                <OrderCard key={key} order={order} />
+                <OrderCard recallData={setOrders} key={key} order={order} />
             ))}
         </div>
     );

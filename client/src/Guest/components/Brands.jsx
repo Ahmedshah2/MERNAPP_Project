@@ -27,7 +27,7 @@ export default function Brand() {
 
             <div className="d-flex flex-wrap justify-content-center m-4">
                 {
-                    brands.map((val, key) => <GuestCards key={key} image={val.BrandImage} name={val.BrandName} />)
+                    brands.map((val, key) => <GuestCards className="user-card" key={key} image={val.BrandImage} name={val.BrandName} />)
                 }
 
             </div>

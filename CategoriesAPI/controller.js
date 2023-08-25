@@ -77,7 +77,8 @@ const deleteCategory = async (req, res) => {
     else {
         try {
             await connect(process.env.MONGODB_URI)
-            const categories = await Category.deleteOne({ _id })
+            await Category.deleteOne({ _id })
+            const categories = await Category.find()
 
             res.json({
                 message: "Category Deleted Successfully",

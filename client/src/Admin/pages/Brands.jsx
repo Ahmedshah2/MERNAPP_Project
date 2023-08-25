@@ -15,6 +15,7 @@ function Brands() {
 
     const [BrandName, setBrandName] = useState("")
     const [BrandImage, setBrandImage] = useState(null)
+    const [brands, setBrands] = useState([])
 
     const AddBrand = (e) => {
         e.preventDefault();
@@ -26,7 +27,7 @@ function Brands() {
                         const payload = { BrandName, BrandImage: url };
                         axios.post('/api/createbrand', payload)
                             .then((json) => {
-                                window.location.reload()
+                                setBrands(json.data.brands)
 
                                 setShow(false);
                             })
@@ -38,7 +39,6 @@ function Brands() {
     }
 
 
-    const [brands, setBrands] = useState([])
     useEffect(() => {
         axios.get('/api/getallbrands').then(json => setBrands(json.data.brands)).catch(err => alert(err.message))
     }, [])
@@ -56,8 +56,7 @@ function Brands() {
         };
 
 
-        axios(config).then(json => console.log(json.data)).finally(window.location.reload()).catch(err => alert(err))
-
+        axios(config).then(json => setBrands(json.data.brands)).catch(err => alert(err))
     }
 
 
@@ -76,7 +75,7 @@ function Brands() {
                 <div className="d-flex flex-wrap justify-content-center m-3">
                     {
                         brands.map((val, key) => <div><UserCards key={key} image={val.BrandImage} name={val.BrandName} />
-                            <Button className='ms-4' variant="danger" onClick={deletebrand.bind(null, val._id)}>Delete Brand</Button>
+                            <Button className='ms-4 mt-3' variant="danger" onClick={deletebrand.bind(null, val._id)}>Delete Brand</Button>
                         </div>)
                     }
 
@@ -112,8 +111,6 @@ function Brands() {
                             </label>
                             <input className="form-control" onChange={(e) => setBrandImage(e.target.files[0])} type="file" id="formFile" />
                         </div>
-
-
 
                         <button type="submit" className="btn btn-primary">
                             Submit

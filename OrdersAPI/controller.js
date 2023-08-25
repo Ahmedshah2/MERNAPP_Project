@@ -105,7 +105,8 @@ const deleteorder = async (req, res) => {
     }
     else {
         await connect(process.env.MONGODB_URI);
-        const orders = await Orders.deleteOne({ _id })
+        await Orders.deleteOne({ _id })
+        const orders = await Orders.find();
         res.json({ message: "Deleted Successfully", orders })
     }
 }
@@ -114,9 +115,10 @@ const updatestatus = async (req, res) => {
 
     try {
         await connect(process.env.MONGODB_URI);
-        const updatedOrder = await Orders.updateOne({ _id: _id }, { $set: { orderStatus: orderStatus } });
+        await Orders.updateOne({ _id: _id }, { $set: { orderStatus: orderStatus } });
+        const orders = await Orders.find();
 
-        res.json({ message: "Updated Successfully", order: updatedOrder });
+        res.json({ message: "Updated Successfully", order: orders });
     } catch (error) {
         res.status(400).json({
             message: error.message

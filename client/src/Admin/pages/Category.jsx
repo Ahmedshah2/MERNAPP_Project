@@ -15,6 +15,7 @@ function CategoryModal() {
 
   const [CategoryName, setCategoryName] = useState("")
   const [CategoryImage, setCategoryImage] = useState(null)
+  const [category, setCategory] = useState([])
 
   const AddCategory = (e) => {
     e.preventDefault();
@@ -26,8 +27,7 @@ function CategoryModal() {
             const payload = { CategoryName, CategoryImage: url };
             axios.post('/api/createcategory', payload)
               .then((json) => {
-                alert(json);
-
+                setCategory(json.data.categories)
                 setShow(false);
                 // window.loacation.reload();
               })
@@ -39,7 +39,6 @@ function CategoryModal() {
   }
 
 
-  const [category, setCategory] = useState([])
   useEffect(() => {
     axios.get('/api/getallcategories')
       .then(json => setCategory(json.data.categories))
@@ -60,7 +59,7 @@ function CategoryModal() {
     };
 
 
-    axios(config).then(json => console.log(json.data)).finally(window.location.reload()).catch(err => alert(err))
+    axios(config).then(json => setCategory(json.data.categories)).catch(err => alert(err))
 
   }
 
@@ -80,7 +79,7 @@ function CategoryModal() {
           {
             category.map((val, key) => <div>
               <UserCards key={key} image={val.CategoryImage} name={val.CategoryName} />
-              <Button className='ms-4' variant="danger" onClick={deletecategory.bind(null, val._id)}>
+              <Button className='ms-4 mt-3' variant="danger" onClick={deletecategory.bind(null, val._id)}>
                 Delete Category
               </Button>
             </div>)

@@ -51,7 +51,8 @@ const deleteBrand = async (req, res) => {
     }
     else {
         await connect(process.env.MONGODB_URI);
-        const brands = await Brand.deleteOne({ _id })
+        await Brand.deleteOne({ _id })
+        const brands = await Brand.find()
         res.json({ message: "Deleted Successfully", brands })
     }
 }

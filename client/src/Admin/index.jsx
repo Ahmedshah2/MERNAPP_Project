@@ -9,10 +9,10 @@ import Brands from './pages/Brands';
 export default function Admin() {
   return (
     <div className="row m-0 p-0">
-      <div className="col-md-3 m-0 p-0 bg-dark" style={{ height: '100vh' }}>
+      <div className="col-md-3 m-0 p-0 bg-dark" >
         <Sidebar />
       </div>
-      <div className="col-md-9">
+      <div className="col-md-9" style={{ height: '100vh', overflow: 'scroll' }}>
         <Routes>
           <Route path="/" element={<Orders />} />
           <Route path="/category" element={<Category />} />
