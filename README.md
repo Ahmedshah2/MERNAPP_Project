@@ -1,3 +1,5 @@
+# Live URL:
+https://kind-blue-prawn-tie.cyclic.cloud/
 
 # Project Title
 
@@ -13,7 +15,10 @@ Description:
 7-Nodemailer
 8-Email service and checkout
 
- This Project is a full-stack MERN (MongoDB, Express.js, React, Node.js) e-commerce platform that provides a seamless online shopping experience. With a user-friendly interface, it offers a wide range of products, powerful search and filtering options, secure user authentication, and a robust shopping cart and checkout system. Shop for your favorite products, manage your orders, and explore a diverse catalog of items, your one-stop online shopping destination.
+ This Project is a full-stack MERN (MongoDB, Express.js, React, Node.js) e-commerce platform that provides a seamless online shopping experience. With a user-friendly interface, it offers a wide range of products, powerful search and filtering options, secure user authentication, and a robust shopping cart and checkout system. Shop for your favorite products, manage your orders, and explore a diverse catalog of items, your one-stop online shopping destination.#Live URL:
+https://kind-blue-prawn-tie.cyclic.cloud/
+
+
 ## API Reference
 
 #### Get all items
@@ -98,10 +103,24 @@ Delete apis
 ``` http
 
 DELETE /api/deletecategory  ```requires  "CategoryName" in query
+DELETE /api/deleteproduct  ```requires _id in body```
+DELETE /api/deleteorder   ``` requires _id in body```
+DELETE /api/deletebrand   ``` requires _id in body```
 
-UPDATE /api/updatecategory ```requires "_id", "CategoryName" and "CategoryImage" in body
+
+Update Apis
+
+
+UPDATE/PUT -  /api/updatecategory ```requires "_id", "CategoryName" and "CategoryImage" in body
+
+UPDATE/Put - /api/updatestatus ```requires _id and orderStatus in body ```
+
+
 ## Authors
 
 - [@octokatherine](https://github.com/Ahmedshah2)
 
 Ahmed Shah
+
+Web Live URL:
+https://kind-blue-prawn-tie.cyclic.cloud/
