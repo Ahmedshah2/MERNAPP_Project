@@ -1,56 +1,81 @@
 import React from 'react'
-import Carousel from 'react-bootstrap/Carousel';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../Components/Footer';
 
 export default function Home() {
 
-    const images = [
-        "https://www.mageants.com/media/mageants_blog/abc.jpg",
-        "https://img.freepik.com/premium-vector/web-banner-illustration-buy-online-e-commerce-online-shopping_1124-625.jpg?w=2000",
-        "https://www.shutterstock.com/shutterstock/photos/2145523383/display_1500/stock-vector-template-for-online-store-online-shopping-banner-ecommerce-marketing-homepage-layout-realistic-2145523383.jpg"
-    ]
-
+    const data = [
+        {
+            imageUrl: 'src/assets/4.jpg',
+            text: 'Variety of High-Quality Premium Fabrics',
+        },
+        {
+            imageUrl: 'https://storage.googleapis.com/pai-images/ae234ff4997c4c27b241fa49242cfbc9.jpeg',
+            text: 'Explore Our Variety of T-Shirts',
+        },
+        {
+            imageUrl: 'src/assets/img/parallax-2.jpg',
+            text: 'Explore Our Variety of Travelling Products',
+        },
+        {
+            imageUrl: 'src/assets/SLGA002.jpg',
+            text: 'Premium Watches Variety By E-Hub',
+        },
+    ];
     return (
-        <div>
-            <Carousel prevIcon={
-                <span
+
+        <>
+            {data.map((val, key) => (
+                <section
+                    key={key}
                     style={{
-                        backgroundColor: '#ff0000',
-                        color: '#fff',
-                        borderRadius: '50%',
-                        padding: '10px',
+                        backgroundImage: `url(${val.imageUrl})`,
+                        backgroundAttachment: 'fixed',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        minHeight: '100vh',
                     }}
-                    className="carousel-control-prev-icon"
-                    aria-hidden="true"
-                />
-            }
-                nextIcon={
-                    <span
-                        style={{
-                            backgroundColor: '#ff0000',
-                            color: '#fff',
-                            borderRadius: '50%',
-                            padding: '10px',
-                        }}
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                    />
-                }>
-                {images.map((val, key) =>
-                    <Carousel.Item>
-                        <Link to={`/products`}>
-                            <img key={key} style={{ height: '80vh', width: '100%' }}
-                                src={val}
-                                alt="First slide"
-                            />
-                            <Carousel.Caption>
-                                <h1 style={{ color: 'red' }}>Browse Our Products for Exclusive discount offers Upto 70% OFF.</h1>
-                            </Carousel.Caption>
-                        </Link>
-                    </Carousel.Item>
-                )}
-            </Carousel>
-        </div>
+                    className="parallax-holder text-center text-white text-center"
+                >
+                    <div className="container position-relative">
+                        <div className="row">
+                            <div className="col-xl-8 col-lg-10 mx-auto mx-auto">
+                                <h1 className="text-shadow">{val.text}</h1>
+                                <p className="lead text-shadow mb-4">
+                                    One morning, when Gregor Samsa woke from troubled dreams, he found
+                                    himself transformed in his bed into a horrible vermin. He lay on his
+                                    armour-like back, and if he lifted his head a little he could see
+                                    his brown belly, slightly domed and divided by arches into stiff
+                                    sections
+                                </p>
+                                <p>
+                                    {" "}
+                                    <Link className="btn btn-light" to="/category">
+                                        <svg className="svg-icon me-2 svg-icon-heavy svg-icon-sm">
+                                            <use xlinkHref="#shopping-bag-1"> </use>
+                                        </svg>
+                                        See this offer
+                                    </Link>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            ))}
+
+
+            {/* Footer*/}
+            <Footer />
+            <link
+                rel="stylesheet"
+                href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+                integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+                crossOrigin="anonymous"
+            />
+        </>
+
+
     )
 }

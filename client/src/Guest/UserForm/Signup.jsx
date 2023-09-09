@@ -14,8 +14,8 @@ export default function Signupform() {
         const payload = { email, password, username }
 
         axios.post('/api/signup', payload)
-            .then((json) => console.log(json))
-            .catch(err => console.log(err))
+            .then((json) => window.location.reload())
+            .catch(err => alert(err.message))
 
     }
 

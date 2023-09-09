@@ -14,7 +14,7 @@ export default function UserNav() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Link className='navbar-brand' to='/'>E Commerce</Link>
+                <Link className='navbar-brand' to='/'>E-Commerce</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto">

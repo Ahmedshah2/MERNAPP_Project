@@ -21,7 +21,7 @@ export default function Brands() {
             <div className="d-flex flex-wrap justify-content-center m-4">
                 {brands?.map((val, key) => (
                     <div key={key}>
-                        < UserCards image={val.BrandImage} name={val.BrandName} url={`/brands/${val.BrandName}`} />
+                        < UserCards image={val.BrandImage} name={val.BrandName} url="/products" />
                     </div>
                 ))}
             </div>

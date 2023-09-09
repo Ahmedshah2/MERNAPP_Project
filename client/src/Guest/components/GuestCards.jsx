@@ -7,7 +7,7 @@ import '../../User/Components/card.css'
 
 export default function GuestCards({ name, image }) {
     return (
-        <Row className="m-1 user-card">
+        <Row className="m-1 user-card mt-3">
             <Col className='m-1'>
                 <Link to={`/${name.split(' ').join('-')}`} className='text-decoration-none'>
                     <Card style={{ width: '320px' }}>

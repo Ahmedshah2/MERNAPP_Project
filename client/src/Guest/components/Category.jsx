@@ -20,7 +20,7 @@ export default function Category() {
 
             <div className="d-flex flex-wrap justify-content-center m-4">
                 {
-                    category.map((val, key) => <GuestCards className="user-card" key={key} image={val.CategoryImage} name={val.CategoryName} />)
+                    category.map((val, key) => <GuestCards key={key} image={val.CategoryImage} name={val.CategoryName} />)
                 }
 
             </div>

@@ -9,7 +9,7 @@ export default function GuestNav() {
     return (
         <Navbar>
             <Container>
-                <Link className="navbar-brand" to='/'>Web</Link>
+                <Link className="navbar-brand" to='/'>E-Commerce</Link>
                 <Navbar.Toggle aria-aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">

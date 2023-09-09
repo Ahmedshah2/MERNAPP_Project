@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import './custom.css'
 import { GlobalContext } from '../../../Context/context'
 import { decodeToken } from 'react-jwt'
@@ -6,6 +6,22 @@ import { decodeToken } from 'react-jwt'
 export default function ProfileCard() {
     const { state, dispatch } = useContext(GlobalContext)
     const currentUser = decodeToken(state.token)
+
+    const fileInputRef = useRef(null);
+
+    const handleAvatarClick = () => {
+        // Trigger the file input when the div is clicked
+        fileInputRef.current.click();
+    };
+
+    const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        if (selectedFile) {
+            // You can now handle the selected file as needed, e.g., upload it to a server.
+            // For now, we'll just display the file name.
+            alert(`Selected file: ${selectedFile.name}`);
+        }
+    };
     return (
         <div className="card">
             <div className="card__img">
@@ -111,9 +127,17 @@ export default function ProfileCard() {
                 </svg>
             </div>
 
-            <div className="card__avatar">
+
+            <div className="card__avatar" onClick={handleAvatarClick}>
                 <img src={currentUser.profile} style={{ width: '80%' }} alt="" />
             </div>
+            {/* Hidden file input */}
+            <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+            />
             <div className="card__title">{currentUser.email}</div>
             <div className="card__subtitle mb-2">User: {currentUser.username}</div>
 
