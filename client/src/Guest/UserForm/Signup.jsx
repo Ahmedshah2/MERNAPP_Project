@@ -1,23 +1,25 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Signupform() {
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const [email, setEmail] = useState("")
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-
-    const SignupUser = (e) => {
+    const SignupUser = async (e) => {
         e.preventDefault();
-        const payload = { email, password, username }
+        const payload = { email, password, username };
 
-        axios.post('/api/signup', payload)
-            .then((json) => window.location.reload())
-            .catch(err => alert(err.message))
+        try {
+            await axios.post('/api/signup', payload);
+            navigate('/login');
+        } catch (err) {
+            alert(err.message);
+        }
+    };
 
-    }
 
     return (
         <div className="container-center">

@@ -57,29 +57,24 @@ export default function Footer() {
                         <div className="col-md-6">
                             <p className="mb-0 text-sm fw-normal">
                                 © 2023{" "}
-                                <a
-                                    className="reset-anchor"
-                                    href="https://bootstrapious.com"
-                                    target="_blank"
-                                >
-                                    E-Hub
-                                </a>{" "}
+
+                                E-Commerce
                                 All rights reserved.
                             </p>
                         </div>
                         <div className="col-md-6">
                             <ul className="list-inline text-lg-end mb-0">
                                 <li className="list-inline-item">
-                                    <img src="src/assets/img/visa.svg" alt="..." width={30} />
+                                    <img src="https://icon-library.com/images/visa-master-icon/visa-master-icon-0.jpg" alt="..." width={40} />
                                 </li>
                                 <li className="list-inline-item">
-                                    <img src="src/assets/img/mastercard.svg" alt="..." width={30} />
+                                    <img src="https://www.iconarchive.com/download/i76280/designbolts/credit-card-payment/Visa.256.png" alt="..." width={40} />
                                 </li>
                                 <li className="list-inline-item">
-                                    <img src="src/assets/img/paypal.svg" alt="..." width={30} />
+                                    <img src="https://icons.veryicon.com/png/Business/Credit%20Card%20Payment/Paypal.png" alt="..." width={40} />
                                 </li>
                                 <li className="list-inline-item">
-                                    <img src="src/assets/img/western-union.svg" alt="..." width={30} />
+                                    <img src="https://iconsplace.com/wp-content/uploads/_icons/ffa500/256/png/mastercard-icon-11-256.png" alt="..." width={40} />
                                 </li>
                             </ul>
                         </div>

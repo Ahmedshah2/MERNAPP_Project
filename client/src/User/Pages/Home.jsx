@@ -7,7 +7,15 @@ export default function Home() {
 
     const data = [
         {
-            imageUrl: 'src/assets/4.jpg',
+            imageUrl: 'https://timeandtidewatches.com/wp-content/uploads/2021/03/SLGA002.jpg.webp',
+            text: 'Premium Watches Variety By E-Hub',
+        },
+        {
+            imageUrl: 'https://thumbs.dreamstime.com/b/mens-suits-hangers-different-colors-mens-suits-different-colors-hanging-hanger-retail-clothes-store-close-up-105303337.jpg',
+            text: 'Explore the Variety of Premium Formal Suits',
+        },
+        {
+            imageUrl: 'https://c8.alamy.com/comp/2HDFA4W/pattern-textile-cover-patterns-fabric-fabrics-textiles-2HDFA4W.jpg',
             text: 'Variety of High-Quality Premium Fabrics',
         },
         {
@@ -15,12 +23,8 @@ export default function Home() {
             text: 'Explore Our Variety of T-Shirts',
         },
         {
-            imageUrl: 'src/assets/img/parallax-2.jpg',
+            imageUrl: 'https://c1.wallpaperflare.com/preview/117/987/576/cloud-beach-sunset-man.jpg',
             text: 'Explore Our Variety of Travelling Products',
-        },
-        {
-            imageUrl: 'src/assets/SLGA002.jpg',
-            text: 'Premium Watches Variety By E-Hub',
         },
     ];
     return (
